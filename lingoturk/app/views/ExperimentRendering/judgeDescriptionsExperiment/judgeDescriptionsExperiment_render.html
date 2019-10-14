@@ -4,6 +4,17 @@
                 <div class="panel-heading" style="font-weight: bolder ;">Instructions</div>
                 <div class="panel-body">
                     @_SHOW_INSTRUCTIONS_@
+                    message: {{RC.showMessage}}
+                    test: {{RC.test}}
+                    shuffle: {{RC.shuffleQuestions}}
+
+                    <script>
+                      a = 5;
+                      b = 6;
+                      c = a + b;
+                      console.log(c);
+                      </script>
+
                     <button ng-click="RC.next()" type="button" class="btn btn-default" style="float:right ; margin-top:20px">Next</button>
                 </div>
             </div>
@@ -23,13 +34,17 @@
             <div id="experiment_content" ng-if="RC.state == 'questionSlide' && RC.questionIndex == $index" ng-repeat="question in RC.questions" style="width:90%; margin:auto">
                 <!-- the main content of the experiment goes here -->
                 <div id="experiment_panel_1" class="panel panel-primary">
-                    <div id="experiment_heading_1" class="panel-heading" style="font-weight: bolder ;">INSTRUCTIONS</div>
+                    <div id="experiment_heading_1" class="panel-heading" style="font-weight: bolder ;">Instructions</div>
                     <div id="experiment_body_1" class="panel-body">
                         <!--
                         Question's content goes here
                         -->
-                            <p>{{question.exampleTrue}}</p>
-                            <p>{{question.exampleFalse}}</p>
+
+                        <p>
+                          Please judge whether the target description shown below is true or false. If you are unsure, consider these examples:
+                        </p>
+                            <p><strong>True</strong>: {{question.exampleTrue}}</p>
+                            <p><strong>False</strong>: {{question.exampleFalse}}</p>
                         <!--
                         End of question
                         -->
@@ -45,7 +60,7 @@
                 <!-- /the main content of the experiment goes here -->
                 <!-- the main content of the experiment goes here -->
                 <div id="experiment_panel_1" class="panel panel-primary">
-                    <div id="experiment_heading_1" class="panel-heading" style="font-weight: bolder ;">Description</div>
+                    <div id="experiment_heading_1" class="panel-heading" style="font-weight: bolder ;">Target description</div>
                     <div id="experiment_body_1" class="panel-body">
                         <!--
                         Question's content goes here
@@ -64,8 +79,10 @@
 
                         <!--<radio-answer options= ['True', 'False'] answer="question.answer">  </radio-answer>-->
                         <div class="button-group", style=" margin-top:20px" >
-                          <button ng-click="RC.nextQuestion()" type="button" class="btn btn-default" ng-disabled="question.answer == ''" style="margin-top:20px">Next</button>
+                          <button ng-click="RC.nextQuestion()" type="button" class="btn btn-default" ng-disabled="question.answer === undefined || question.answer == '' || question.answer == {}" style="margin-top:20px">Next</button>
                         </div>
+
+                        <!-- ng-disabled="question.answer === undefined || question.answer == '' || question.answer == {}"-->
                         <!--
                         If you don't want to skip participants through your items, you should prevent them by checking if the input is empty. In that case the
                         button will be disabled. We use the "ng-disabled" attribute to achieve that. Below you find an example how that might look like:

@@ -108,6 +108,7 @@
         };
 
         this.next = function(){
+          console.log('executing this script');
             if(self.state == "workerIdSlide"){
                 if(self.questionId == null && self.partId == null){
                     self.load(function(){
@@ -127,13 +128,17 @@
         this.nextQuestion = function(){
             if(self.questionIndex + 1 < self.questions.length){
                 ++self.questionIndex;
+                console.log('executing this when loading next question');
             }else{
                 self.next();
+                console.log('executing this when loading next question');
             }
         };
 
         this.load = function(callback){
             var subListMap = self.subListMap;
+            var test = self.test;
+            console.log(3+4);
 
             if(self.questionId != null){
                 $http.get("/getQuestion/" + self.questionId).success(function (data) {
@@ -233,6 +238,7 @@
 
             $scope.$apply(self.state = self.allStates[0]);
 
+
             $(document).on("keypress", ":input:not(textarea)", function(event) {
                 if (event.keyCode == 13) {
                     event.preventDefault();
@@ -241,5 +247,3 @@
         });
     }]);
 })();
-
-

@@ -7,6 +7,7 @@
         this.assignmentId = -1;
         this.words = [];
         this.stacks = [];
+        this.test = 'executing proptotype script';
 
         this.currentActiveItem = null;
         this.startingElement = null;

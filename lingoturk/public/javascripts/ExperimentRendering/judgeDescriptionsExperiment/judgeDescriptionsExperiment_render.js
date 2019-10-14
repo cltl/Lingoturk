@@ -45,6 +45,15 @@
             }
         };
 
+        this.resultsSubmittedNoLink = function(){
+            self.subListsIds.splice(0,1);
+            if(self.subListsIds.length > 0 ){
+                self.showMessage = "none";
+            }else{
+                self.processFinish();
+            }
+        };
+
         this.processFinish = function(){
             if(!self.useGoodByeMessage){
                 self.finished();
@@ -106,6 +115,28 @@
                 .success(successCallback)
                 .error(errorCallback);
         };
+// added by Pia
+        this.submitResultsNoLink = function (successCallback, errorCallback) {
+            var results = {
+                experimentType : "judgeDescriptionsExperiment",
+                results : self.questions,
+                expId : self.expId,
+                origin : self.origin,
+                statistics : self.statistics,
+                assignmentId : self.assignmentId,
+                hitId : self.hitId,
+                workerId : self.workerId,
+                partId : (self.partId == null ? -1 : self.partId)
+            };
+
+            $http.post("/submitResults", results)
+              .success(successCallback)
+              .error(errorCallback);
+
+          };
+
+
+
 
         this.next = function(){
             if(self.state == "workerIdSlide"){
@@ -127,8 +158,11 @@
         this.nextQuestion = function(){
             if(self.questionIndex + 1 < self.questions.length){
                 ++self.questionIndex;
+                self.submitResults(self.resultsSubmittedNoLink, self.handleError);
             }else{
+                self.submitResults(self.resultsSubmittedNoLink, self.handleError);
                 self.next();
+
             }
         };
 
@@ -241,5 +275,3 @@
         });
     }]);
 })();
-
-
