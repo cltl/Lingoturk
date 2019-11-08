@@ -3,5 +3,5 @@ SELECT fileName, listNumber, assignmentId, hitId, workerId, origin, timestamp, p
 	LEFT OUTER JOIN Questions USING (QuestionId)
 	LEFT OUTER JOIN Groups USING (PartId)
 ) as tmp
-WHERE LingoExpModelId = 301
+WHERE LingoExpModelId = 343
 ORDER BY partId, questionId, workerId

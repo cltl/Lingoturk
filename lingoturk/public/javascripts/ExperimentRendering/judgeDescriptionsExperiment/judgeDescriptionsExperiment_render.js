@@ -46,7 +46,7 @@
         };
 
         this.resultsSubmittedNoLink = function(){
-            self.subListsIds.splice(0,1);
+            //self.subListsIds.splice(0,1);
             if(self.subListsIds.length > 0 ){
                 self.showMessage = "none";
             }else{
@@ -98,6 +98,12 @@
 
         self.failedTries = 0;
         this.submitResults = function (successCallback, errorCallback) {
+            //var i;
+          //  for (i = 0; i < self.questions.length; i++) (
+          //    console.log(Object.values(self.questions[i]))
+          //  );
+            console.log(self.questions);
+            console.log([self.questions[self.questionIndex - 1]]);
             var results = {
                 experimentType : "judgeDescriptionsExperiment",
                 results : self.questions,
@@ -109,32 +115,13 @@
                 workerId : self.workerId,
                 partId : (self.partId == null ? -1 : self.partId)
             };
+            console.log($http.post("/submitResults", results))
 
 
             $http.post("/submitResults", results)
                 .success(successCallback)
                 .error(errorCallback);
         };
-// added by Pia
-        this.submitResultsNoLink = function (successCallback, errorCallback) {
-            var results = {
-                experimentType : "judgeDescriptionsExperiment",
-                results : self.questions,
-                expId : self.expId,
-                origin : self.origin,
-                statistics : self.statistics,
-                assignmentId : self.assignmentId,
-                hitId : self.hitId,
-                workerId : self.workerId,
-                partId : (self.partId == null ? -1 : self.partId)
-            };
-
-            $http.post("/submitResults", results)
-              .success(successCallback)
-              .error(errorCallback);
-
-          };
-
 
 
 
@@ -157,6 +144,7 @@
 
         this.nextQuestion = function(){
             if(self.questionIndex + 1 < self.questions.length){
+                console.log('nextQuestion', 'questionIndex + 1 < len questions', self.questionIndex)
                 ++self.questionIndex;
                 self.submitResults(self.resultsSubmittedNoLink, self.handleError);
             }else{
@@ -172,7 +160,6 @@
             if(self.questionId != null){
                 $http.get("/getQuestion/" + self.questionId).success(function (data) {
                     self.questions = [data];
-
                     subListMap[self.questions[0].subList] = [self.questions[0]];
 
                     if(callback !== undefined){
@@ -196,12 +183,14 @@
                         }else{
                             subListMap[q.subList] = [q];
                             self.subListsIds.push(q.subList);
+                            console.log(self.subListsIds);
                         }
                     }
                     if(self.shuffleSublists){
                         shuffleArray(self.subListsIds);
                     }
                     self.questions = self.subListMap[self.subListsIds[0]];
+                    console.log(self.questions)
 
                     if(callback !== undefined){
                         callback();
