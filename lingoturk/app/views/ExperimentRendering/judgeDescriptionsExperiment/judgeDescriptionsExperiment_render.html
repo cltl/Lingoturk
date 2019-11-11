@@ -4,17 +4,7 @@
                 <div class="panel-heading" style="font-weight: bolder ;">Instructions</div>
                 <div class="panel-body">
                     @_SHOW_INSTRUCTIONS_@
-                    message: {{RC.showMessage}}
-                    test: {{RC.test}}
-                    shuffle: {{RC.shuffleQuestions}}
-
-                    <script>
-                      a = 5;
-                      b = 6;
-                      c = a + b;
-                      console.log(c);
-                      </script>
-
+                    {{RC.showMessage}}
                     <button ng-click="RC.next()" type="button" class="btn btn-default" style="float:right ; margin-top:20px">Next</button>
                 </div>
             </div>
