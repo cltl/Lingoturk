@@ -1,5 +1,5 @@
 (function () {
-    var app = angular.module('judgeDescriptionsExperimentApp', ["Lingoturk"]);
+    var app = angular.module('judgeDescriptionsProlificExperimentApp', ["Lingoturk"]);
 
     app.controller('RenderController', ['$http', '$timeout', '$scope', function ($http, $timeout, $scope) {
         var self = this;
@@ -102,7 +102,7 @@
 
         this.submitResults = function (successCallback, errorCallback) {
             var results = {
-                experimentType : "judgeDescriptionsExperiment",
+                experimentType : "judgeDescriptionsProlificExperiment",
                 // write all results answered up until now to database:
                 //results : self.questions,
                 // only write current question to database:
@@ -176,9 +176,14 @@
                         var q = self.questions[i];
                         if (subListMap.hasOwnProperty(q.subList)){
                             subListMap[q.subList].push(q);
+                            //assign redirectUrl
+                            self.redirectUrl = q.completionUrl;
                         }else{
                             subListMap[q.subList] = [q];
                             self.subListsIds.push(q.subList);
+                            console.log(self.subListsIds);
+                            //assign redirectUrl
+                            self.redirectUrl = q.completionUrl;
 
                         }
                     }

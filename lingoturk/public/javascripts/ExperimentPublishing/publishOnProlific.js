@@ -24,7 +24,7 @@
 
             $http.post("/publishProlific", data)
                 .success(function () {
-                    $("#submitButton").hide();
+                    $("#submitButton").show();
                     $("#successButton").show();
                 })
                 .error(function (data) {
@@ -38,6 +38,7 @@
             $("#failButton").hide();
             $("#successButton").hide();
             $("#tabs").tabs({});
+
 
             $("#completionUrl").on("input", function(){
                 $("#experimentUrl").text(encodeURIComponent(this.value));
