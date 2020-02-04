@@ -4,7 +4,7 @@
                 <div class="panel-heading" style="font-weight: bolder ;">Instructions</div>
                 <div class="panel-body">
                     @_SHOW_INSTRUCTIONS_@
-                    {{RC.showMessage}}
+                    <!--{{RC.showMessage}}-->
                     <button ng-click="RC.next()" type="button" class="btn btn-default" style="float:right ; margin-top:20px">Next</button>
                 </div>
             </div>
@@ -33,8 +33,8 @@
                         <p>
                           Please judge whether the target description shown below is true or false. If you are unsure, consider these examples:
                         </p>
-                            <p><strong>True</strong>: {{question.exampleTrue}}</p>
-                            <p><strong>False</strong>: {{question.exampleFalse}}</p>
+                            <p><strong>Agree</strong>: {{question.exampleTrue}}</p>
+                            <p><strong>Disagree</strong>: {{question.exampleFalse}}</p>
                         <!--
                         End of question
                         -->
@@ -61,10 +61,10 @@
                         End of question
                         -->
                         <div class="radio-inline">
-                            <label><input type="radio" class="questionRadio{{$index}}" data-ng-value="true" ng-model="question.answer[$index].answer">true</label>
+                            <label><input type="radio" class="questionRadio{{$index}}" data-ng-value="Agree" ng-model="question.answer[$index].answer">true</label>
                         </div>
                         <div class="radio-inline">
-                            <label><input type="radio" class="questionRadio{{$index}}" data-ng-value="false" ng-model="question.answer[$index].answer">false</label>
+                            <label><input type="radio" class="questionRadio{{$index}}" data-ng-value="Disagree" ng-model="question.answer[$index].answer">false</label>
                         </div>
 
                         <!--<radio-answer options= ['True', 'False'] answer="question.answer">  </radio-answer>-->

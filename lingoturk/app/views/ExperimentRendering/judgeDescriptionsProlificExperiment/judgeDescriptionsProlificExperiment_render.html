@@ -31,10 +31,10 @@
                         -->
 
                         <p>
-                          Please judge whether the target description shown below is true or false. If you are unsure, consider these examples:
+                          Do you agree or disagree with the discription below? If you are unsure, consider these examples:
                         </p>
-                            <p><strong>True</strong>: {{question.exampleTrue}}</p>
-                            <p><strong>False</strong>: {{question.exampleFalse}}</p>
+                            <p><strong>agree</strong>: {{question.exampleTrue}}</p>
+                            <p><strong>disagree</strong>: {{question.exampleFalse}}</p>
                         <!--
                         End of question
                         -->
@@ -61,10 +61,10 @@
                         End of question
                         -->
                         <div class="radio-inline">
-                            <label><input type="radio" class="questionRadio{{$index}}" data-ng-value="true" ng-model="question.answer[$index].answer">true</label>
+                            <label><input type="radio" class="questionRadio{{$index}}" data-ng-value="true" ng-model="question.answer[$index].answer">agree</label>
                         </div>
                         <div class="radio-inline">
-                            <label><input type="radio" class="questionRadio{{$index}}" data-ng-value="false" ng-model="question.answer[$index].answer">false</label>
+                            <label><input type="radio" class="questionRadio{{$index}}" data-ng-value="false" ng-model="question.answer[$index].answer">disagree</label>
                         </div>
 
                         <!--<radio-answer options= ['True', 'False'] answer="question.answer">  </radio-answer>-->
