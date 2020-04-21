@@ -27,8 +27,9 @@
             {name: 'tab', val : '\t'},
             {name: 'space', val : ' '}
         ];
-        this.delimiter = ',';
+        this.delimiter = 'tab';
         this.commentSequence = '#';
+        console.log('test');
 
         self.questionColumnNames = null;
 
@@ -134,16 +135,22 @@
         };
 
         this.fileLoaded = function (fileObject) {
+            console.log('selecting file');
             self.files.push(fileObject);
             self.processFile(fileObject);
         };
 
         this.processFile = function(fileObject){
-            var parsedContent = CSVToArray(fileObject.fileContent, self.delimiter);
+            var totalContent = CSVToArray(fileObject.fileContent, self.delimiter);
+            var parsedContent = totalContent.slice(1,);
+            var header = totalContent[0];
+
+            console.log(header);
 
             var columnNames = new Array(parsedContent[0].length);
             for (var i = 0; i < columnNames.length; ++i) {
-                columnNames[i] = "";
+                columnNames[i] = header[i];
+            console.log(columnNames);
             }
             if(self.questionColumnNames == null){
                 self.questionColumnNames = columnNames;
