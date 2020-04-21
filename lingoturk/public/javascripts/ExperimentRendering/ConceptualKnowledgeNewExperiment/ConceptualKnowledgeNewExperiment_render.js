@@ -1,5 +1,5 @@
 (function () {
-    var app = angular.module('ConceptualKnowledgeExperimentApp', ["Lingoturk"]);
+    var app = angular.module('ConceptualKnowledgeNewExperimentApp', ["Lingoturk"]);
 
     app.controller('RenderController', ['$http', '$timeout', '$scope', function ($http, $timeout, $scope) {
         var self = this;
@@ -20,6 +20,7 @@
         self.subListsIds = [];
         self.showMessage = "none";
         self.redirectUrl = null;
+        self.batchName = "";
 
         self.shuffleQuestions = true;
         self.shuffleSublists = true;
@@ -102,7 +103,7 @@
 
         this.submitResults = function (successCallback, errorCallback) {
             var results = {
-                experimentType : "ConceptualKnowledgeExperiment",
+                experimentType : "ConceptualKnowledgeNewExperiment",
                 // write all results answered up until now to database:
                 //results : self.questions,
                 // only write current question to database:
@@ -155,11 +156,11 @@
             // assign experiment name here
 
 
+
             if(self.questionId != null){
                 $http.get("/getQuestion/" + self.questionId).success(function (data) {
                     self.questions = [data];
                     subListMap[self.questions[0].subList] = [self.questions[0]];
-
                     if(callback !== undefined){
                         callback();
                     }
@@ -169,7 +170,8 @@
                     var json = data;
                     self.part = json;
                     self.questions = json.questions;
-
+                    self.batchName = self.questions[0].name;
+                    console.log(self.batchName);
                     if(self.shuffleQuestions){
                         shuffleArray(self.part.questions);
                     }
@@ -192,8 +194,7 @@
                     if(self.shuffleSublists){
                         shuffleArray(self.subListsIds);
                     }
-                    self.questions = self.subListMap[self.subListsIds[0]];
-
+                    self.questions = self.subListMap[self.subListsIds[0]]
                     if(callback !== undefined){
                         callback();
                     }

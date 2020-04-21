@@ -13,7 +13,7 @@
             <div ng-if="RC.state == 'instructionsSlide'" class="panel panel-primary" style="width:90%; margin:auto">
                 <div class="panel-heading" style="font-weight: bolder ;">Instructions</div>
                 <div class="panel-body">
-                    <p>RC.name</p>
+                    <p> <strong> {{RC.batchName}} </strong></p>
                     @_SHOW_INSTRUCTIONS_@
                     <button ng-click="RC.next()" type="button" class="btn btn-default" style="float:right ; margin-top:20px">Next</button>
                 </div>
