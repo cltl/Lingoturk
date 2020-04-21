@@ -1,8 +1,19 @@
+<html>
+<head>
+<style>
+  ul li, ol li {
+     line-height:160%; /*or whatever height you like*/
+}
+
+</style>
+</head>
+<body>
 <div style="height: 100% ; width: 100%; display: table">
         <div ng-if="RC.showMessage == 'none'" style="display: table-cell ; height: 100% ; vertical-align: middle ;">
             <div ng-if="RC.state == 'instructionsSlide'" class="panel panel-primary" style="width:90%; margin:auto">
                 <div class="panel-heading" style="font-weight: bolder ;">Instructions</div>
                 <div class="panel-body">
+                    <p>RC.name</p>
                     @_SHOW_INSTRUCTIONS_@
                     <button ng-click="RC.next()" type="button" class="btn btn-default" style="float:right ; margin-top:20px">Next</button>
                 </div>
@@ -30,7 +41,7 @@
                         -->
 
                         <p>
-                          Do you agree or disagree with the discription below? If you are unsure, consider these examples:
+                          Do you agree or disagree with the discription below? Consider these examples:
                         </p>
                             <p><strong>agree</strong>: {{question.exampleTrue}}</p>
                             <p><strong>disagree</strong>: {{question.exampleFalse}}</p>
@@ -125,3 +136,5 @@
             </div>
         </div>
 </div>
+</body>
+</html>

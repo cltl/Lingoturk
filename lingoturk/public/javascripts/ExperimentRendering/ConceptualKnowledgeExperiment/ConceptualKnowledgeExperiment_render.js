@@ -152,6 +152,8 @@
 
         this.load = function(callback){
             var subListMap = self.subListMap;
+            // assign experiment name here
+
 
             if(self.questionId != null){
                 $http.get("/getQuestion/" + self.questionId).success(function (data) {
