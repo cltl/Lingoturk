@@ -1,0 +1,17 @@
+<div class="row" ng-repeat="source in sources.split('_') track by $index">
+    <label class="col-md-5" for="selectbasic" style="font-weight:normal">
+        <H5 align="right">
+            <span style="font-family:verdana;color:blue">
+                {{source}}
+            </span>
+        </H5>
+    </label>
+    <div class="col-md-5">
+        <select class="form-control" name="dropdown-sources-input" ng-model="selected"
+            ng-change="setAnswer('source{{$index}}', selected)">
+            <option value="" selected disabled hidden> -- select an option --
+            </option>
+            <option ng-repeat="opt in options" value="{{opt.value}}">{{opt.text}}</option>
+        </select>
+    </div>
+</div>
