@@ -72,28 +72,53 @@
                         End of question
                         -->
                         <div class="radio-inline">
-                            <label><input type="radio" class="questionRadio{{$index}}" data-ng-value="true" ng-model="question.answer[$index].answer">agree</label>
+                            <label><input id="statement1" type="radio" name="statement" class="questionRadio{{$index}}" data-ng-value="true" ng-model="question.answer[$index].answer">agree</label>
                         </div>
                         <div class="radio-inline">
-                            <label><input type="radio" class="questionRadio{{$index}}" data-ng-value="false" ng-model="question.answer[$index].answer">disagree</label>
+                            <label><input id="statement2" type="radio" name="statement" class="questionRadio{{$index}}" data-ng-value="false" ng-model="question.answer[$index].answer">disagree</label>
                         </div>
+                      </div>
+                      </div>
+
+                      <div id="experiment_panel_1" class="panel panel-primary">
+                          <div id="experiment_heading_1" class="panel-heading" style="font-weight: bolder ;">Expected crowd-behavior</div>
+                          <div id="experiment_body_1" class="panel-body">
+
 
                         <!--<radio-answer options= ['True', 'False'] answer="question.answer">  </radio-answer>-->
+                        <div class="panel-heading">
+                            Do you expect the crowd to agree? </div>
+                            <div class="radio-inline">
+                                <label><input id="crowd1" type="radio" name="crowd" class="questionRadio{{$index}}" data-ng-value="true" ng-model="question.answer[$index].crowd">yes</label>
+                            </div>
+                            <div class="radio-inline">
+                                <label><input id="crowd2" type="radio" name="crowd" class="questionRadio{{$index}}" data-ng-value="false" ng-model="question.answer[$index].crowd">no</label>
+                            </div>
+
 
 
                         <div class="panel-heading">
-                            Please enter a reason for your choice. </div>
+                            Please enter possible reasons for disagreement here (if there a none, leave it empty). </div>
                         <div class="panel-body question">
                             <div class="form-group">
-                                <blockquote id="sentence" style="border-right : 5px solid #FF9500 ;">
+                                <blockquote id="reason"  name="reason" style="border-right : 5px solid #FF9500 ;">
                                     <textarea  ng-model="question.answer[$index].reason" type="text" class="form-control" id="fillerArea{{$index}}" style="resize : none" placeholder="type here"></textarea>
                                 </blockquote>
-
+                            </div>
+                        </div>
+                        <div class="panel-heading">
+                            Please enter any other comments here (e.g. ambiguity or general difficulty of the statement). </div>
+                        <div class="panel-body question">
+                            <div class="form-group">
+                                <blockquote id="comment" name = "comment" style="border-right : 5px solid #FF9500 ;">
+                                    <textarea  ng-model="question.answer[$index].comment" type="text" class="form-control" id="fillerArea{{$index}}" style="resize : none" placeholder="type here"></textarea>
+                                </blockquote>
                             </div>
                         </div>
                         <div class="button-group", style=" margin-top:20px" >
                           <button ng-click="RC.nextQuestion()" type="button" class="btn btn-default" ng-disabled="question.answer === undefined || question.answer == '' || question.answer == {}" style="margin-top:20px">Next</button>
                         </div>
+                      </div>
 
 
                         <!-- ng-disabled="question.answer === undefined || question.answer == '' || question.answer == {}"-->
