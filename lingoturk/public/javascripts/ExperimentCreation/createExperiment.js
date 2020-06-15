@@ -22,14 +22,13 @@
         this.files = [];
 
         this.delimiters = [
-            {name: ',', val : ','},
-            {name: ';', val : ';'},
-            {name: 'tab', val : '\t'},
-            {name: 'space', val : ' '}
+            { name: ',', val: ',' },
+            { name: ';', val: ';' },
+            { name: 'tab', val: '\t' },
+            { name: 'space', val: ' ' }
         ];
         this.delimiter = 'tab';
         this.commentSequence = '#';
-        console.log('test');
 
         self.questionColumnNames = null;
 
@@ -41,18 +40,18 @@
             return arr;
         };
 
-        this.submit = function(){
-            for(var i = 0; i < self.groups.length; ++i){
+        this.submit = function () {
+            for (var i = 0; i < self.groups.length; ++i) {
                 var group = self.groups[i];
                 var questions = [];
                 group.questions = questions;
                 var content = group.parsedContent;
                 var columnNames = self.questionColumnNames;
 
-                for(var j = 0; j < content.length; ++j){
+                for (var j = 0; j < content.length; ++j) {
                     var question = self.createQuestion();
-                    for(var c = 0; c < columnNames.length; ++c){
-                        if(columnNames[c].trim() == "" || columnNames[c].trim() == "-- select field --"){
+                    for (var c = 0; c < columnNames.length; ++c) {
+                        if (columnNames[c].trim() == "" || columnNames[c].trim() == "-- select field --") {
                             continue;
                         }
                         question[columnNames[c]] = content[j][c];
@@ -66,14 +65,14 @@
                 name: this.name,
                 description: this.description,
                 additionalExplanations: this.additionalExplanations,
-                type : this.type + "Experiment",
+                type: this.type + "Experiment",
                 exampleQuestions: this.exampleQuestions,
                 parts: this.groups
             };
 
             $http.post("/submitNew_Experiment", experiment)
                 .success(function () {
-                    bootbox.alert("Experiment created. You will be redirected to the index page!", function() {
+                    bootbox.alert("Experiment created. You will be redirected to the index page!", function () {
                         window.location.href = "/";
                     });
                 })
@@ -86,7 +85,7 @@
             return eval("new self." + self.groupType.name + "()");
         };
 
-        this.createQuestion = function(){
+        this.createQuestion = function () {
             return eval("new self." + self.questionType.name + "()");
         };
 
@@ -116,17 +115,17 @@
             }
             if (oldValue != "") {
                 var index = self.usedNames.indexOf(oldValue);
-                if(index != -1){
+                if (index != -1) {
                     self.usedNames.splice(index, 1);
                 }
             }
         };
 
-        this.delimiterChanged = function(){
+        this.delimiterChanged = function () {
             self.usedNames = [];
             self.questionColumnNames = null;
             self.groups = [];
-            for(var i = 0; i < self.files.length; ++i){
+            for (var i = 0; i < self.files.length; ++i) {
                 self.processFile(self.files[i]);
             }
             $timeout(function () {
@@ -140,22 +139,29 @@
             self.processFile(fileObject);
         };
 
-        this.processFile = function(fileObject){
+        this.processFile = function (fileObject) {
+            // read content of file (header and rows)
             var totalContent = CSVToArray(fileObject.fileContent, self.delimiter);
-            var parsedContent = totalContent.slice(1,);
+            var parsedContent = totalContent.slice(1);
             var header = totalContent[0];
 
-            console.log(header);
+            // determine if header contains listNr; 
+            // if so, remove from header (but keep in data for splitting lists)
+            var listNrIndex = header.indexOf("listNr");
+            if (listNrIndex > -1) {
+                header.splice(listNrIndex, 1);
+            }
 
-            var columnNames = new Array(parsedContent[0].length);
+            // create column names
+            var columnNames = new Array(header.length);
             for (var i = 0; i < columnNames.length; ++i) {
                 columnNames[i] = header[i];
-            console.log(columnNames);
             }
-            if(self.questionColumnNames == null){
+            if (self.questionColumnNames == null) {
                 self.questionColumnNames = columnNames;
             }
 
+            // skip empty rows & comment rows
             for (var i = 0; i < parsedContent.length; ++i) {
                 row = parsedContent[i];
                 var notAllEmpty = false;
@@ -170,11 +176,37 @@
                 }
             }
 
-            var group = self.createGroup();
-            group.fileName = fileObject.fileName;
-            group.parsedContent = parsedContent;
+            // two scenarios: listNr column or no listNr column
+            if (listNrIndex > -1) {
 
-            self.addGroup(group);
+                // create different lists based on values in listNr column
+                var groupsByListNr = {};
+                for (i = 0; i < parsedContent.length; ++i) {
+                    let row = parsedContent[i];
+                    let group = groupsByListNr[row[listNrIndex]];
+                    if (!group) {
+                        group = [];
+                        groupsByListNr[row[listNrIndex]] = group;
+                    }
+                    row.splice(listNrIndex, 1);  // drop listNr from data
+                    group.push(row);
+                }
+                for (const [listNr, data] of Object.entries(groupsByListNr)) {
+                    let group = self.createGroup();
+                    group.fileName = fileObject.fileName + '-' + listNr;
+                    group.listNumber = listNr;
+                    group.parsedContent = data;
+                    self.addGroup(group);
+                }
+
+            } else {
+                // if no listNr column, create single group
+                let group = self.createGroup();
+                group.fileName = fileObject.fileName;
+                group.parsedContent = parsedContent;
+
+                self.addGroup(group);
+            }
         };
 
         $(document).ready(function () {
@@ -203,13 +235,13 @@
                     }
 
                     var tmp = [];
-                    if(!(fields instanceof Array)){
+                    if (!(fields instanceof Array)) {
                         for (var key in fields) {
                             if (fields.hasOwnProperty(key)) {
                                 tmp.push(key);
                             }
                         }
-                    }else{
+                    } else {
                         for (var i = 0; i < fields.length; ++i) {
                             var f = fields[i];
                             tmp.push(f.name);
@@ -217,7 +249,7 @@
                     }
 
                     var func = "self[typeName] = function(" + tmp.join(",") + "){\nvar self = this;\nself._type=\"" + typeName + "\";\n";
-                    if(obj.isGroupType){
+                    if (obj.isGroupType) {
                         func + "self.questions=null;\n";
                     }
                     for (var i = 0; i < fields.length; ++i) {
