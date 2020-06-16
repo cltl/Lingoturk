@@ -90,47 +90,47 @@
                             What type of disagreement do you expect? </div>
 
                             <div class="checkbox">
-                                <label><input id="disagreement1" type="checkbox" name="disagreement1" class="questionCheck{{$index}}"  ng-model="question.answer[$index].disagreement_vague">The property is vague.
+                                <label><input id="disagreement1" type="checkbox" name="disagreement1" class="questionCheck{{$index}}"  ng-model="question.answer[$index].disagreement_vague"><p><b> Vague property </b> </p> The property is vague.
                                   <p>For example:<em> Usually, (a/an) leopard is not yellow, but there could be a highly unusual situation in which (a/an) leopard is yellow.</em></p>
                                   <p>Explanation: This depends on what we can count as yellow (e.g. Is a brownish yellow still yellow?).</label>
                             </div>
                             <div class="checkbox">
-                                <label><input id="disagreement2" type="checkbox" name="disagreement2" class="questionCheck{{$index}}"  ng-model="question.answer[$index].disagreement_ambiguous_property">The property is ambiguous and not disambiguated in the context of the concept and description..
+                                <label><input id="disagreement2" type="checkbox" name="disagreement2" class="questionCheck{{$index}}"  ng-model="question.answer[$index].disagreement_ambiguous_property"> <p> <b>Ambiguous property</b> </p> The property is ambiguous and not disambiguated in the context of the concept and description..
                                   <p>For example:<em> You can find (a/an) chutney which is hot. (A/an) chutney is usually either hot, a bit more or less hot or the opposite of hot.</em></p>
                                   <p>Explanation: In many contexts, it is probably clear that the temperature-meaning is more likely, but in this case, the spicy-meaning is also possible.</label>
                             </div>
                             <div class="checkbox">
-                                <label><input id="disagreement3" type="checkbox" name="disagreement3" class="questionCheck{{$index}}"  ng-model="question.answer[$index].disagreement_open_triple">The combination of property, concept and description allows for multiple interpretations.
+                                <label><input id="disagreement3" type="checkbox" name="disagreement3" class="questionCheck{{$index}}"  ng-model="question.answer[$index].disagreement_conceptualization"> <p><b> Conceptualization </b></p> The description asks the participant to place the concept in a conceptual system. The answer depends on the conceptual system of the participant.
                                   <p>For example:<em> I know that (a/an) arrow can fly/be used for flying as most or all other things similar to (a/an) arrow fly.</em><p/>
                                   <p>Explanation: Arrow can be conceptualized as a projectile (leading to agree) or a weapon (leading to disagree) or something else.</p> </label>
                             </div>
                             <div class="checkbox">
-                                <label><input id="disagreement4" type="checkbox" name="disagreement3" class="questionCheck{{$index}}"  ng-model="question.answer[$index].disagreement_odd_pair">The combination of the property and concept is strange and confusing. This is always the case, regardless of the description.
+                                <label><input id="disagreement4" type="checkbox" name="disagreement3" class="questionCheck{{$index}}"  ng-model="question.answer[$index].disagreement_odd_pair"><p><b> Odd pair </b></p> The combination of the property and concept is strange and confusing. This is always the case, regardless of the description.
                                   <p>For example:<em> You can find (a/an) recliner which is square. Square is one of a few possible shapes (a/an) recliner usually has. There is only a limited range of possible shapes.</em><p/>
                                   <p>Explanation: Recliners can have square parts, but they are not really square. You would not describe a recliner in terms of whether it is square. </p> </label>
                             </div>
                             <div class="checkbox">
-                                <label><input id="disagreement4" type="checkbox" name="disagreement4" class="questionCheck{{$index}}"  ng-model="question.answer[$index].disagreement_odd_triple">The combination of the property, concept and description is strange and confusing.
+                                <label><input id="disagreement4" type="checkbox" name="disagreement4" class="questionCheck{{$index}}"  ng-model="question.answer[$index].disagreement_odd_triple"> <p><b> Odd triple </b></p> The combination of the property, concept and description is strange and confusing.
                                   <p>For example:<em> I know that being yellow is necessary for many things (a/an) buttercup does or is used for.</em><p/>
                                   <p>Explanation: A buttercup does not have a specific use, a color does not really enable an activity. </p> </label>
                             </div>
                             <div class="checkbox">
-                                <label><input id="disagreement5" type="checkbox" name="disagreement5" class="questionCheck{{$index}}"  ng-model="question.answer[$index].disagreement_ambiguous_concept">The concept is ambiguous and not disambiguated in the context of the property and description.
+                                <label><input id="disagreement5" type="checkbox" name="disagreement5" class="questionCheck{{$index}}"  ng-model="question.answer[$index].disagreement_ambiguous_concept"><p><b> Ambiguous concept </b></p> The concept is ambiguous and not disambiguated in the context of the property and description.
                                   <p>For example:<em> I know that (a/an) trumpeter can fly/be used for flying as most or all other things similar to (a/an) trumpeter fly.</em><p/>
                                   <p>Explanation: </p> Trumpeter can refer to a musician or a bird. In this case, you could aargue it is disambiguated by fly, but the bird-sense is probably less well known. </label>
                             </div>
                             <div class="checkbox">
-                                <label><input id="disagreement6" type="checkbox" name="disagreement6" class="questionCheck{{$index}}"  ng-model="question.answer[$index].disagreement_specialized_knowledge"> Answering this correctly requires specialized knowledge. It is likely that not all workers are aware of this.
+                                <label><input id="disagreement6" type="checkbox" name="disagreement6" class="questionCheck{{$index}}"  ng-model="question.answer[$index].disagreement_specialized_knowledge"> <p> <b>Specialized knowledge </b></p> Answering this correctly requires specialized knowledge. It is likely that not all workers are aware of this.
                                   <p>For example:<em>  I think (a/an) carrot can be red, but this is rare or uncommon.</em><p/>
                                   <p>Explanation: </p> Red carrots exist, but this not very well-known. </label>
                             </div>
                             <div class="checkbox">
-                                <label><input id="disagreement6" type="checkbox" name="disagreement7" class="questionCheck{{$index}}"  ng-model="question.answer[$index].disagreement_imagination"> This depends on how creative and imaginative a participant is. This type of disagreement only matters for confusions between negatve relations (e.g. rare, unusual, impossible).
-                                  <p>For example:<em>  Usually, (a/an) hot dog cannot walk/be used for walking, but there could be a highly unusual situation in which (a/an) hot dog can walk.</em><p/>
-                                  <p>Explanation: </p> If you think of a cartoon or a person dressed as a hot dog, this can be true. </label>
+                                <label><input id="disagreement6" type="checkbox" name="disagreement7" class="questionCheck{{$index}}"  ng-model="question.answer[$index].disagreement_imagination"> <p> <b> Imagination</b></p> This depends on how creative and imaginative a participant is. This type of disagreement only matters for confusions between negatve relations (e.g. rare, unusual, impossible).
+                                  <p>For example:<em>  I think there is a shovel which can roll/be used for rolling, but this is rare or uncommon. </em><p/>
+                                  <p>Explanation: </p> An imaginative person will most likely imagine a situation in which a shovel is somehow rolling (e.g. down a hill), while a less creative person will probably reason that the shape of a shovel keeps it from rolling.  </label>
                             </div>
                             <div class="checkbox">
-                                <label><input id="disagreement7" type="checkbox" name="disagreement7" class="questionCheck{{$index}}"  ng-model="question.answer[$index].disagreement_agreement"> I expect agreement between competent workers who are taking the task seriously.
+                                <label><input id="disagreement7" type="checkbox" name="disagreement7" class="questionCheck{{$index}}"  ng-model="question.answer[$index].disagreement_agreement">  <p> <b> Agreement </b> </p>  I expect agreement between competent workers who are taking the task seriously.
                             </div>
 
 
@@ -138,7 +138,7 @@
 
 
                         <div class="panel-heading">
-                            Other reasons for disagreement: </div>
+                            <b> Other reasons for disagreement:</b> </div>
                         <div class="panel-body question">
                             <div class="form-group">
                                 <blockquote id="reason"  name="reason" style="border-right : 5px solid #FF9500 ;">
@@ -147,7 +147,7 @@
                             </div>
                         </div>
                         <div class="panel-heading">
-                            Comments </div>
+                          <b>  Comments </b> </div>
                         <div class="panel-body question">
                             <div class="form-group">
                                 <blockquote id="comment" name = "comment" style="border-right : 5px solid #FF9500 ;">
