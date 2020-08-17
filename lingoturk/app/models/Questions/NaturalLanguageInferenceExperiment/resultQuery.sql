@@ -1,7 +1,7 @@
-SELECT fileName, listNumber, assignmentId, hitId, workerId, origin, timestamp, partId, questionId, answer::TEXT, (data->>'index') as index, (data->>'sent') as sent, (data->>'sentence') as sentence, (data->>'sentence') as sentence, (data->>'statement') as statement, (data->>'statement') as statement, (data->>'n') as n, (data->>'source1') as source1, (data->>'visibility1') as visibility1, (data->>'source2') as source2, (data->>'visibility2') as visibility2, (data->>'source3') as source3, (data->>'visibility3') as visibility3, (data->>'sources') as sources, id FROM (
+SELECT fileName, listNumber, workerId, origin, timestamp, partId, questionId, answer::TEXT, (data->>'listNr') as listNr, (data->>'index') as index, (data->>'sent') as sent, (data->>'sentence') as sentence, (data->>'sentence') as sentence, (data->>'sentence') as sentence, (data->>'statement') as statement, (data->>'statement') as statement, (data->>'n') as n, (data->>'sources') as sources, (data->>'html') as html, (data->>'sim') as sim, (data->>'true') as true, (data->>'completionUrl') as completionUrl, id FROM (
 	(SELECT * FROM Results WHERE experimentType='NaturalLanguageInferenceExperiment') as tmp1
 	LEFT OUTER JOIN Questions USING (QuestionId)
 	LEFT OUTER JOIN Groups USING (PartId)
 ) as tmp
-WHERE LingoExpModelId = 181
+WHERE LingoExpModelId = 611
 ORDER BY partId, questionId, workerId
