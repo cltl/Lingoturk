@@ -39,6 +39,7 @@
         // use this at the end of a sublist
         this.resultsSubmitted = function(){
             self.subListsIds.splice(0,1);
+            console.log(self.redirectUrl);
             if(self.subListsIds.length > 0 ){
                 self.showMessage = "nextSubList";
             }else{
@@ -70,8 +71,12 @@
                 $("#form").submit();
             }else if(self.origin == "PROLIFIC"){
 				if(inIframe()){
+                    console.log(self.redirectUrl);
+                    console.log("in frame");
                     window.top.location.href = self.redirectUrl;
                 }else{
+                    console.log(self.redirectUrl);
+                    console.log("not in frame");
                     window.location = self.redirectUrl;
                 }
             }
