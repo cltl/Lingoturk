@@ -214,6 +214,10 @@
                     self.part = json;
                     self.partId = json.id;
                     self.questions = json.questions;
+                    //assign redirectUrl
+                    if (self.questions[0].completionUrl != null) {
+                        self.redirectUrl = self.questions[0].completionUrl;
+                    }
 
                     if(self.shuffleQuestions){
                         shuffleArray(self.part.questions);
