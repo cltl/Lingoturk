@@ -120,6 +120,7 @@
                 assignmentId : self.assignmentId,
                 hitId : self.hitId,
                 workerId : self.workerId,
+                redirectUrl : self.redirectUrl,
                 partId : (self.partId == null ? -1 : self.partId)
             };
 
@@ -178,7 +179,9 @@
                     self.part = json;
                     self.questions = json.questions;
                     self.batchName = self.questions[0].name;
+                    self.redirectUrl = self.questions[0].completionUrl;
                     console.log(self.batchName);
+                    console.log(self.redirectUrl);
                     if(self.shuffleQuestions){
                         shuffleArray(self.part.questions);
                     }
