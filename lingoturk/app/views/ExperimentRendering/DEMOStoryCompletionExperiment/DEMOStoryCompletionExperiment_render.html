@@ -28,33 +28,34 @@
                         <!--
                         Question's content goes here
                         -->
+                        <div class="panel-group">
+                          <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h4 class="panel-title">
+                                <a data-toggle="collapse" href="#collapse1">Instructions</a>
+                              </h4>
+                            </div>
+                            <div id="collapse1" class="panel-collapse collapse">
+                              <div class="panel-body"><p> Please read each piece of text carefully. First, you have to decide whether the text is positive or not based on your own interpretation. Then, you have to check the words that make the sentence positive (tokens). The text can be either only "positive" or "not positive" and not both. Therefore, only one of these choices can be checked. However, you can choose as many tokens as needed. If a sentence is detected as not positive, the choice "none of these" has to be checked by the annotator. Workers should not leave all choices unchecked. If you find a sentence positive on the whole but are not able to decide which particular token makes it positive, "none of these" has to be checked.</p><p>Here are a few helpful examples:</p><p>1- Everything is ready for the birthday party (positive) </p><p>Positive tokens: ready </p><p>2- I've lost my umbrella. (not positive) </p><p>Positive tokens: none of these </p><p>If you have any questions or feedback regarding the sentences and the whole task, please contact Baran Barbarestani via b.barbarestani@vu.nl. </p></div>
+                            </div>
+                          </div>
+                        </div>
                         <div ng-if="RC.state == 'questionSlide' && RC.questionIndex == $index" ng-repeat="question in RC.questions" style="width:90% ; margin:auto">
-                          <span style="display : block ; margin-top : 15px">{{"***"}}</span>
-                          <label for="explanations">Explanations</label>
-                          <blockquote id="explanations">
-                            <span style="display : block ; margin-top : 15px">{{"A statement is positive when the reader of that statement finds it desirable, constructive, useful, etc. in a way that she/ he feels good about it."}}</span>
-                            <span style="display : block ; margin-top : 15px">{{"Example: Everything is ready for the birthday party."}}</span>
-
-                          </blockquote>
-                            <span style="display : block ; margin-top : 15px">{{"***"}}</span>
                             <span style="display : block ; margin-top : 15px">{{"text: "}}</span>
                             <span style="display : block ; margin-top : 15px">{{question.text}}</span>
-                            <span style="display : block ; margin-top : 15px">{{"positivity detection"}}</span>
+                            <span style="display : block ; margin-top : 15px">{{"positivity detection:"}}</span>
                             <radio-answer
                               options= "['positive','not positive']"
                               answer1 = "question.answer"
                               >
                             </radio-answer>
-                            <span style="display : block ; margin-top : 15px">{{"positive tokens"}}</span>
+                            <span style="display : block ; margin-top : 15px">{{"positive tokens:"}}</span>
                             <checkbox-answer
                               options = question.tokens
                               answer2 = "question.answer"
                               add-none="true"
-                              data-type = "horizontal"
-
                             >
                             </checkbox-answer>
-
                         <!--
                         End of question
                         -->
@@ -95,7 +96,7 @@
             </div>
         </div>
 
-        <div ng-if="RC.showMessage == 'goodBye'" style="height : 100% ; width : 100% ; display : table ; position: absolute; top: 0; left: 0">
+        <div ng-if="RC.showMessage == 'goodBye'" style="height : 100% ; width : 90% ; display : table ; position: absolute; top: 0; left: 0">
             <div style="display: table-cell ; height: 100% ; vertical-align: middle ;">
                 <div style="width:90%; margin:auto">
                     <div class="panel panel-primary">
