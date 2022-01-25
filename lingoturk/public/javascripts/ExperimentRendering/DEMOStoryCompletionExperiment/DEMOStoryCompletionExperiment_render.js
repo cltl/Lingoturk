@@ -187,6 +187,7 @@
 
                     for(var i = 0; i < self.questions.length; ++i){
                         var q = self.questions[i];
+                        q.tokens = q.tokens.split(',')
                         if (subListMap.hasOwnProperty(q.subList)){
                             subListMap[q.subList].push(q);
                         }else{
