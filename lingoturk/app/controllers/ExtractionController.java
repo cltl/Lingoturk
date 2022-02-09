@@ -194,7 +194,7 @@ public class ExtractionController extends Controller {
         for (int i = 0; i < usedFields.size(); ++i) {
             String field = usedFields.get(i);
             if (field.startsWith(experimentType + "_")) {
-                String fieldName = field.split("_", 2)[1];
+                String fieldName = field.split("_")[1];
                 usedFields.set(i, "(data->>'" + fieldName + "\') as " + fieldName);
             }
             if (field.equals("answer")) {
@@ -208,10 +208,11 @@ public class ExtractionController extends Controller {
             if (useStored) {
                 query = getStoredQuery(experimentType);
             } else {
-                query = "SELECT " + String.join(", ", usedFields) + " FROM (\n\t" + "(SELECT * FROM Results WHERE experimentType='" + experimentType + "Experiment') as tmp1\n\tLEFT OUTER JOIN Questions USING (QuestionId)\n\tLEFT OUTER JOIN Groups USING (PartId)\n) as tmp\nWHERE LingoExpModelId = " + expId;
+                query = "SELECT " + String.join(", ", usedFields) + " FROM (\n\t" + "(SELECT * FROM Results WHERE experimentType='" + experimentType + "Experiment') as tmp1\n\tLEFT OUTER JOIN Questions USING (QuestionId)\n\tLEFT OUTER JOIN Groups USING (PartId)\n) as tmp\nWHERE partid = " + expId;
                 if (!orderBy.isEmpty()) {
                     query += "\nORDER BY " + String.join(", ", orderBy);
                 }
+
             }
 
             Writer fileWriter = new StringWriter();
