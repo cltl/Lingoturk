@@ -1,0 +1,114 @@
+<div style="height: 100% ; width: 100%; display: table">
+        <div ng-if="RC.showMessage == 'none'" style="display: table-cell ; height: 100% ; vertical-align: middle ;">
+            <div ng-if="RC.state == 'instructionsSlide'" class="panel panel-primary" style="width:90%; margin:auto">
+                <div class="panel-heading" style="font-weight: bolder ;">Instructions</div>
+                <div class="panel-body">
+                    @_SHOW_INSTRUCTIONS_@
+                    <button ng-click="RC.next()" type="button" class="btn btn-default" style="float:right ; margin-top:20px">Next</button>
+                </div>
+            </div>
+
+            <div ng-if="RC.state == 'workerIdSlide'" class="panel panel-primary" style="width:90%; margin:auto">
+                <div class="panel-heading" style="font-weight: bolder ;">Please enter your workerId into the box below:</div>
+                <div class="panel-body">
+                    <input id="workerId" ng-model="RC.workerId" name="workerId" type="text" class="form-control" placeholder="enter here">
+                    <button ng-click="RC.next()" type="button" ng-disabled="RC.workerId == ''" class="btn btn-default" style="float:right ; margin-top:20px">Next</button>
+                </div>
+            </div>
+
+            <div ng-if="RC.state == 'statisticsSlide'">
+                <statistics-slide statistics="RC.statistics" click="RC.next"></statistics-slide>
+            </div>
+
+            <div id="experiment_content" ng-if="RC.state == 'questionSlide' && RC.questionIndex == $index" ng-repeat="question in RC.questions" style="width:90%; margin:auto">
+                <!-- the main content of the experiment goes here -->
+                <div id="experiment_panel_1" class="panel panel-primary">
+                    <div id="experiment_heading_1" class="panel-heading" style="font-weight: bolder ;">INSTRUCTIONS HERE</div>
+                    <div id="experiment_body_1" class="panel-body">
+                        <!--
+                        Question's content goes here
+                        -->
+                        <div class="panel-group">
+                          <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h4 class="panel-title">
+                                <a data-toggle="collapse" href="#collapse1">Instructions</a>
+                              </h4>
+                            </div>
+                            <div id="collapse1" class="panel-collapse collapse">
+                              <div class="panel-body"><p> Please read each piece of text carefully. All of the provided sentences are offensive. You have to determine whether the sentence is targeting someone or not. This means whether the sentence is addressing and/ or about someone or not. In this case, only human beings are meant to be taken as targets. Therefore, if any other living being is even targeted, the sentence should not be labeled as targeting.The text can be either only "targeting" or "not targeting" and not both. Annotators should not leave the questions unanswered. </p>
+<strong>Examples</strong>
+<p>1- What smells worse than a goblin? Oh yeah, you!. (targeting) </p>
+<p>2- Just because we don't let groups of creepy Indian rapists into the club doesn't make us racist. (targeting)</p>
+<p>3- What a stupid dog! (not targeting) </p>
+<p>4- When it comes to politics, I really don't give a fuck (not targeting) </p></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div ng-if="RC.state == 'questionSlide' && RC.questionIndex == $index && RC.number == $number" ng-repeat="question in RC.questions" style="width:90% ; margin:auto">
+                            <span style="display : block ; margin-top : 15px">{{"Question Index: " + $index}}</span>
+                            <span style="display : block ; margin-top : 15px">{{"text: "}}</span>
+                            <span style="display : block ; margin-top : 15px">{{question.text}}</span>
+                            <span style="display : block ; margin-top : 15px">{{"Targeting or not:"}}</span>
+                            <radio-answer
+                              options= "['targeting','not targeting']"
+                              answer = "question.answer"
+                              >
+                            </radio-answer>
+                        <!--
+                        End of question
+                        -->
+                        <button ng-click="RC.nextQuestion()" type="button" class="btn btn-default" style="float:right ; margin-top:20px">Next</button>
+                        <!--
+                        If you don't want to skip participants through your items, you should prevent them by checking if the input is empty. In that case the
+                        button will be disabled. We use the "ng-disabled" attribute to achieve that. Below you find an example how that might look like:
+
+                        <button ng-disabled="question.answer === undefined || question.answer === '' || question.answer == {}" ng-click="RC.nextQuestion()" type="button" class="btn btn-default" style="float:right ; margin-top:20px">Next</button>
+                        -->
+                    </div>
+                </div>
+                <!-- /the main content of the experiment goes here -->
+            </div>
+        </div>
+
+        <div ng-if="RC.showMessage == 'nextSubList'" style="height : 100% ; width : 100% ; display : table ; position: absolute; top: 0; left: 0">
+            <div style="display: table-cell ; height: 100% ; vertical-align: middle ;">
+                <div style="width:90%; margin:auto">
+                    <!-- <this message is shown if a user successfully finished a sublist> -->
+                    <div class="panel panel-primary">
+                        <!-- <the message's heading> -->
+                        <div class="panel-heading" style="font-weight: bolder ;" id="nextSubList_title">Attention:</div>
+                        <!-- </the message's heading> -->
+                        <div class="panel-body">
+                            <!-- <the message content> -->
+                            <div id="nextSubList_message">
+                            You've successfully completed a sublist. You may either stop here or continue with another one.
+                            </div>
+                            <!-- </the message content. please don't edit the buttons below (except their label)> -->
+                            <hr/>
+                            <button ng-click="RC.processFinish()" style="float:right; margin-left: 10px;" class="btn btn-default" type="button">Stop here</button>
+                            <button ng-click="RC.nextSublist()" style="float:right" class="btn btn-default" type="button">Continue</button>
+                        </div>
+                    </div>
+                    <!-- </this message is shown if a user successfully finished a sublist> -->
+                </div>
+            </div>
+        </div>
+
+        <div ng-if="RC.showMessage == 'goodBye'" style="height : 100% ; width : 90% ; display : table ; position: absolute; top: 0; left: 0">
+            <div style="display: table-cell ; height: 100% ; vertical-align: middle ;">
+                <div style="width:90%; margin:auto">
+                    <div class="panel panel-primary">
+                        <div id="goodBye_title" class="panel-heading" style="font-weight: bolder ;">Attention:</div>
+                        <div class="panel-body">
+                            <div id="goodBye_message">
+                                You've successfully completed the experiment. Thank you for your participation. To hand in your submission, click on the "Submit"-button below.
+                            </div>
+                            <hr/>
+                            <button ng-click="RC.finished()" style="float:right" class="btn btn-default" type="button">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
