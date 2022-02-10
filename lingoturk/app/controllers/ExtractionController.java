@@ -208,11 +208,10 @@ public class ExtractionController extends Controller {
             if (useStored) {
                 query = getStoredQuery(experimentType);
             } else {
-                query = "SELECT " + String.join(", ", usedFields) + " FROM (\n\t" + "(SELECT * FROM Results WHERE experimentType='" + experimentType + "Experiment') as tmp1\n\tLEFT OUTER JOIN Questions USING (QuestionId)\n\tLEFT OUTER JOIN Groups USING (PartId)\n) as tmp\nWHERE partid = " + expId;
+                query = "SELECT " + String.join(", ", usedFields) + " FROM (\n\t" + "(SELECT * FROM Results WHERE experimentType='" + experimentType + "Experiment') as tmp1\n\tLEFT OUTER JOIN Questions USING (QuestionId)\n\tLEFT OUTER JOIN Groups USING (PartId)\n) as tmp\nWHERE LingoExpModelId = " + expId;
                 if (!orderBy.isEmpty()) {
                     query += "\nORDER BY " + String.join(", ", orderBy);
                 }
-
             }
 
             Writer fileWriter = new StringWriter();
