@@ -194,7 +194,7 @@ public class ExtractionController extends Controller {
         for (int i = 0; i < usedFields.size(); ++i) {
             String field = usedFields.get(i);
             if (field.startsWith(experimentType + "_")) {
-                String fieldName = field.split("_")[1];
+                String fieldName = field.split("_", 2)[1];
                 usedFields.set(i, "(data->>'" + fieldName + "\') as " + fieldName);
             }
             if (field.equals("answer")) {
