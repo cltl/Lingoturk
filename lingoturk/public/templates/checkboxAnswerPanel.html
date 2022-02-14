@@ -4,11 +4,6 @@
     }
 </style>
 <div>
-    <div>
-      <input type="checkbox" id="scales" name="scales"
-       >
-      <label for="scales">not targeting at all</label>
-    </div>
     <div ng-init="loaded()" ng-class="{'add-margin': descriptionsAvailable}" class="checkbox" ng-repeat="opt in options track by $index">
         <label>
             <input ng-disabled="answer['none']" type="checkbox" ng-model="answer[opt]" ng-true-value="true" ng-false-value="false" name="checkbox-answer-input">
@@ -22,5 +17,4 @@
             none of these
         </label>
     </div>
-
 </div>
