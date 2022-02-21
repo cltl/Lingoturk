@@ -158,7 +158,7 @@
                     for(var i = 0; i < self.questions.length; ++i){
                         var q = self.questions[i];
                         q.tokens = q.tokens.split(',');
-			q.tokens.unshift("not targeting at all");
+			q.tokens.unshift("not targeting");
                         if (subListMap.hasOwnProperty(q.subList)){
                             subListMap[q.subList].push(q);
                         }else{
@@ -189,7 +189,7 @@
                     for(var i = 0; i < self.questions.length; ++i){
                         var q = self.questions[i];
                         q.tokens = q.tokens.split(',');
-			q.tokens.unshift("not targeting at all");
+			q.tokens.unshift("not targeting");
                         if (subListMap.hasOwnProperty(q.subList)){
                             subListMap[q.subList].push(q);
                         }else{
