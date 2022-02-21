@@ -35,24 +35,32 @@
                                 </h4>
                               </div>
                             <div id="collapse1" class="panel-collapse collapse">
-                              <div class="panel-body"><p> Please read each piece of text carefully. All of the provided sentences are offensive. You have to determine whether the sentence is targeting someone or not and if yes, who the target is. This means whether the sentence is addressing and/ or about someone or not. In this case, only human beings are meant to be taken as targets. Therefore, if any other living being is excluded in this sense. If the sentence is not targeting anyone at all, "not targeting at all" has to be chosen. If you think the sentence is targeting someone but the target is not explicitly mentioned in the sentence, you have to choose "none of these".
+                              <div class="panel-body"><p> A total of 30 sentences will be provided to you indexed from 0 to 29. Please read each piece of text carefully. You have to determine whether the sentence is targeting someone or not and if yes, who the target is and what words refer to that target. This means whether the sentence is expressing a judgement or opinion (either positive or negative) about someone or not. In this case, only human beings are meant to be taken as targets. Therefore, any other living being is excluded in this sense. If the sentence is not targeting anyone at all, "not targeting" has to be chosen. If you think the sentence is targeting someone but are not sure which word can be checked as a reference to it, you have to choose "none of these". Please check all words and subwords referring to the target no matter how many times they have appeared in the sentence.
 Annotators should not leave the questions completely unanswered. </p>
 <strong>Examples</strong>
 <p>1- What smells worse than a goblin? Oh yeah, you!. </p>
-<p>Target: you</p>
+<p>Target words: you</p>
 <p>2- Just because we don't let groups of creepy Moroccan rapists into the club doesn't make us racist.</p>
-<p>Target: Moroccan</p>
+<p>Target words: creepy, Moroccan, rapists </p>
 <p>3- What a stupid dog!</p>
-<p>Target: not targeting at all</p>
+<p>Target words: not targeting---> Not a human being</p>
 <p>4- When it comes to politics, I really don't give a fuck! </p>
-<p>Target: not targeting at all</p>
+<p>Target words: not targeting---> Not a human being </p>
+<p>5- We have to fire this moron! </p>
+<p>Target words: this, moron </p>
+<p>6- Mary is a fucking bitch. She started screaming for no reason when I showed her that picture.</p>
+<p>Target words: Mary, fucking, bitch, she, her </p>
+<p>7- She is sitting next to the window.</p>
+<p>Target: none of these ---> No judgment has been expressed about a person.</p>
+<p>8- I like old people.</p>
+<p>Target: old, people ---> There is an opinion expressed about old people. The target is "old people" so both words "old" and "people" have to be checked. </p>
 <p>**********************************************************</p>
 <p>If you have any questions or feedback regarding the sentences and the whole task, please contact <b>Baran Barbarestani</b> via <b>b.barbarestani@vu.nl</b>. </p></div>
                             </div>
-                           <span style="display : block ; margin-top : 15px">{{"Question Index: " + $index}}</span>
+                           <span style="display : block ; margin-top : 15px">{{"Question Index: " + $index + "30}}</span>
                            <span style="display : block ; margin-top : 15px">{{"Text: "}}</span>
                            <span style="display : block ; margin-top : 15px">{{question.text}}</span>
-                           <span style="display : block ; margin-top : 15px">{{"Target:"}}</span>
+                           <span style="display : block ; margin-top : 15px">{{"Target words:"}}</span>
                            <checkbox-answer
                              options = question.tokens
                              answer = "question.answer"
