@@ -195,9 +195,13 @@
                         q.tokens = q.tokens.split(',');
                         if (subListMap.hasOwnProperty(q.subList)){
                             subListMap[q.subList].push(q);
+                            // assign redirect URL
+                            self.redirectUrl = q.redirectUrl;
                         }else{
                             subListMap[q.subList] = [q];
                             self.subListsIds.push(q.subList);
+                            // assign redirect redirect URL
+                            self.redirectUrl = q.redirectUrl;
                         }
                     }
                     if(self.shuffleSublists){
