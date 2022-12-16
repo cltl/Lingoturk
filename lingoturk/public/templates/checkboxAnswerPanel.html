@@ -1,4 +1,6 @@
-<style>
+<!--old code (vertical checkboxes_:-->
+<!--
+    <style>
     .add-margin {
         margin-top:10px !important;
     }
@@ -11,4 +13,21 @@
             <span><i>{{descriptions[$index]}}</i></span>
         </label>
     </div>
+</div>
+//-->
+<!--new code code (horizontal checkboxes):-->
+<style>
+    .add-margin {
+        margin-top:10px !important;
+    }
+</style>
+<div>
+    <div ng-init="loaded()" ng-class="{'add-margin': descriptionsAvailable}" class="checkbox-inline" ng-repeat="opt in options track by $index">
+        <label style="direction:ltr;">
+            <input ng-disabled="answer['none']" type="checkbox" ng-model="answer[opt]" ng-true-value="true" ng-false-value="false" name="checkbox-answer-input" display= "inline-block", style = "width: 15px; padding: 0; margin: 0; position: relative; top: 0px;">
+            <span>{{opt}}</span><br/>
+            <span><i>{{descriptions[$index]}}</i></span>
+        </label>
+      </div>
+
 </div>
