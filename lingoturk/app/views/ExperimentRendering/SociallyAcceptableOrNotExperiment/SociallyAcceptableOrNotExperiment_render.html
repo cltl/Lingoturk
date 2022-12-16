@@ -1,0 +1,143 @@
+<div
+  <div
+    <div style="height: 100% ; width: 100%; display: table">
+            <div ng-if="RC.showMessage == 'none'" style="display: table-cell ; height: 100% ; vertical-align: middle ;">
+                <div ng-if="RC.state == 'instructionsSlide'" class="panel panel-primary" style="width:90%; margin:auto">
+                    <div class="panel-heading" style="font-weight: bolder ;">Instructions</div>
+                    <div class="panel-body">
+                        @_SHOW_INSTRUCTIONS_@
+                        <button ng-click="RC.next()" type="button" class="btn btn-default" style="float:right ; margin-top:20px">Next</button>
+                    </div>
+                </div>
+
+                <div ng-if="RC.state == 'workerIdSlide'" class="panel panel-primary" style="width:90%; margin:auto">
+                    <div class="panel-heading" style="font-weight: bolder ;">Please enter your workerId into the box below:</div>
+                    <div class="panel-body">
+                        <input id="workerId" ng-model="RC.workerId" name="workerId" type="text" class="form-control" placeholder="enter here">
+                        <button ng-click="RC.next()" type="button" ng-disabled="RC.workerId == ''" class="btn btn-default" style="float:right ; margin-top:20px">Next</button>
+                    </div>
+                </div>
+
+                <div ng-if="RC.state == 'statisticsSlide'">
+                    <statistics-slide statistics="RC.statistics" click="RC.next"></statistics-slide>
+                </div>
+
+                <div ng-if="RC.state == 'questionSlide' && RC.questionIndex == $index" ng-repeat="question in RC.questions" style="width:90%; margin:auto">
+
+
+                    <!-- <this part can also be replaced by a template or your own ideas> -->
+                    <div class="panel panel-primary">
+                      <div class="alert">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                        <strong>Attention!</strong> This study contains highly abusive language. Please do not proceed if you feel uncomfortable facing such content.
+                      </div>
+                      <div class="panel-heading" style="font-weight: bolder ;">INSTRUCTIONS HERE</div>
+                      <div class="panel-body">
+                        <!--
+                        Question's content goes here
+                      --><div class="panel-group">
+                          <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h4 class="panel-title">
+                                <a data-toggle="collapse" href="#collapse1">Instructions</a>
+                              </h4>
+                            </div>
+                            <div id="collapse1" class="panel-collapse collapse">
+                              <div class="panel-body">
+                                <p> A total of 15 conversation threads will be provided to you indexed from 0 to 14, each on a separate page. Please read each thread carefully. Every thread has a number of comments that follow each other in order of appearance. Comments are numbered in the given order. The comment number and token number corresponsing to each token (word) are to the left of that token so you can easily follow them in the right order. Please read the comments from left to right and check the words that make the comments socially unacceptable, inappropriate or improper. This means that the comment expresses a negative, bad, unfavorable, or unpleasant judgment or opinion about a person or group of people. Thus, judgments about non-human phenomena are excluded. As you keep reading, you should also take all possible preceding comments (from the same thread) and the title of the thread into account. This means that your final decision should depend on the current comment and the previous comments. You should not read the subsequent comments when making a decision about the current comments. Please check as many tokens as required. If a comment has absolutely no inappropriate token, please check "none" at the end of that comment. The checkbox for each token is located on the right side of that token. Please note that you should not leave any of the comments completely unannotated.
+                               </p>
+                               <p><strong>Examples: </strong></p>
+                              <p>1- You dumb bitch and seriously ugly, ugly person.</p>
+                              <p>Socially unacceptable tokens: dumb, bitch, ugly, ugly</p>
+                              <p>2- You are arrogant.</p>
+                              <p>Socially unacceptable tokens: arrogant</p>
+                              <p>3- You are a hidious person</p>
+                              <p>Socially unacceptable tokens: hidious</p>
+                              <p>4- God, I’d like to gag her!</p>
+                              <p>Socially unacceptable tokens: gag</p>
+                              <p>5- You’re an idiot! I hope you learnt a valuable lesson.</p>
+                              <p>Socially unacceptable tokens: idiot</p>
+                              <p>6- You’re a fucking disgrace.</p>
+                              <p>Socially unacceptable tokens: fucking, disgrace</p>
+                              <p>7- All of them are leeches and don't deserve any support from us.</p>
+                              <p>Socially unacceptable tokens: leeches, don't, deserve, any, support</p>
+                              <p>8- They are rats that contaminate everyone around them.</p>
+                              <p>Socially unacceptable tokens: rats, contaminate</p>
+                              <p>9- They are subhuman and should not be seen in public.</p>
+                              <p>Socially unacceptable tokens: subhuman, should, not, be, seen, in, public</p>
+                              <p>10- They should be punished. We are not doing enough to rid us of those filthy animals.</p>
+                              <p>Socially unacceptable tokens: should, be, punished, rid, filthy, animals</p>
+
+  <p>**********************************************************</p>
+  <p>If you have any questions or feedback regarding the sentences and the whole task, please contact <b>Baran Barbarestani</b> via <b>b.barbarestani@vu.nl</b>.</p>
+                              </div>
+                            </div>
+                          </div>
+                         </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-primary">
+                      <div class="panel-heading" style="font-weight: bolder ;">QUESTION</div>
+
+                               <span style="display : block ; margin-top : 15px; margin-left : 20px;">{{"Question Index: " + $index + " out of 14"}}</span>
+                               <span style="display : block ; font-weight: bolder; margin-top : 15px; margin-left : 20px;">{{"Title:"}}</span>
+                               <span style="display : block ; margin-top : 15px; margin-left : 20px;">{{question.title_text}}</span>
+                               <span style="display : block ; margin-bottom: 10px; font-weight: bolder; margin-top : 15px; margin-left : 20px;">{{"Conversation:"}}</span>
+                               <checkbox-answer
+                                 options = question.comment_text
+                                 answer = "question.answer"
+                                 add-none="true"
+                               >
+                               </checkbox-answer>
+
+
+                            <!--
+                            End of question
+                            -->
+                            <button ng-disabled="question.answer === undefined || question.answer == '' || question.answer == {}" ng-click="RC.nextQuestion()" type="button" class="btn btn-default" style="float:right ; margin-top:20px">Next</button>
+                     </div>
+               </div>
+            </div>
+                    <!-- </this part can also be replaced by a template or your own ideas> -->
+    </div>
+  </div>
+  <div ng-if="RC.showMessage == 'nextSubList'" style="height : 100% ; width : 100% ; display : table ; position: absolute ; top: 0 ; left: 0">
+      <div style="display: table-cell ; height: 100% ; vertical-align: middle ;">
+          <div style="width:90% ; margin:auto">
+              <!-- <this message is shown if a user successfully finished a sublist> -->
+              <div class="panel panel-primary">
+                  <!-- <the message's heading> -->
+                  <div class="panel-heading" style="font-weight: bolder ;" id="nextSubList_title">Attention:</div>
+                  <!-- </the message's heading> -->
+                  <div class="panel-body">
+                      <!-- <the message content> -->
+                      <div id="nextSubList_message">
+                          You've successfully completed a sublist. You may either stop here or continue with another one.
+                      </div>
+                      <!-- </the message content. please don't edit the buttons below (except their label)> -->
+                      <hr/>
+                      <button ng-click="RC.processFinish()" style="float:right ; margin-left: 10px ;" class="btn btn-default" type="button">Stop here</button>
+                      <button ng-click="RC.nextSublist()" style="float:right" class="btn btn-default" type="button">Continue</button>
+                  </div>
+              </div>
+              <!-- </this message is shown if a user successfully finished a sublist> -->
+          </div>
+      </div>
+  </div>
+  <div ng-if="RC.showMessage == 'goodBye'" style="height : 100% ; width : 100% ; display : table ; position: absolute ; top: 0 ; left: 0">
+      <div style="display: table-cell ; height: 100% ; vertical-align: middle ;">
+          <div style="width:90% ; margin:auto">
+              <div class="panel panel-primary">
+                  <div id="goodBye_title" class="panel-heading" style="font-weight: bolder ;">Attention:</div>
+                  <div class="panel-body">
+                      <div id="goodBye_message">
+                          You've successfully completed the experiment. Thank you for your participation. To hand in your submission, click on the "Submit"-button below.
+                      </div>
+                      <hr/>
+                      <button ng-click="RC.finished()" style="float:right" class="btn btn-default" type="button">Submit</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
