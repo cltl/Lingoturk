@@ -92,14 +92,7 @@
             self.failedTries = 0;
             bootbox.alert("An error occurred while submitting your results. Please try again in a few seconds.");
         };
-        this.isAnyCheckboxSelected = function() {
-          for (var i = 0; i < self.questions.length; i++) {
-            if ($scope.RC.questions[i].answer) {
-              return true; // At least one checkbox is selected
-            }
-          }
-          return false; // No checkbox is selected
-        };
+      
 
 
         this.handleError = function(){
