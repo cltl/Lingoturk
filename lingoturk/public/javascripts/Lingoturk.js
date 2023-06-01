@@ -1,5 +1,5 @@
 (function () {
-    var app = angular.module('Lingoturk', ['ngSanitize']);
+    var app = angular.module('Lingoturk', ['ngSanitize', 'ng-showdown']);
 
     /* http://stackoverflow.com/questions/9381926/angularjs-insert-html-into-view */
     app.filter('unsafe', function ($sce) {
