@@ -43,36 +43,52 @@
                   </div>
                   <div id="collapse1" class="panel-collapse collapse">
                     <div class="panel-body">
-                      <p>You should first read the previous comments in the conversation thread. Then, read the current comment carefully and identify the words that make reference to a group of people <b> targeted inappropriately per target category in the comment</b>. Please note that you should identify all reference words for all target groups. In case a comment does not have any targeting word referring to a particular target category, you should state that as well. Below are some examples:</p>
-                      <pre><p>sexual orientation: Gay men refuse to fuck like any other person.</p>
-                      <p>reference words: Gay</p>
-                      <p>gender: This person is a cisgender man pretending to be a woman to sell his shitty blog.</p>
-                      <p>reference words: cisgender, man</p>
-                      <p>disability: Why are you just sitting there like a mentally paralyzed person?</p>
-                      <p>reference words: mentally, paralyzed</p>
-                      <p>age: He still acts like a child.</p>
-                      <p>reference words: child</p>
-                      <p>race, ethnicity, or nationality: I don’t give a fuck if you are Asian.</p>
-                      <p>reference words: Asian</p>
-                      <p>religion: I literally hate Christians so much.</p>
-                      <p>reference words: Christians</p>
-                      <p>famous individual: How embarrassing Serena Williams was at the US open when she lost to Osaka.</p>
-                      <p>reference words: Serena, Williams </p>
-                      <p>another person in the conversation thread: Sit the fuck down, you colossal piece of shit.</p>
-                      <p>reference words: you </p>
-                      <p>speaker: Stupid me did not press the record button.</p>
-                      <p>reference words: me </p>
-                      </pre>
-                      <p>If there is any target category present in the comment other than the categories above, you should identify that as "other".</p>
-                      <pre>
-                      <p>other: Domestic immigrants are as bad if not worse than small boat people. </p>
-                      <p>reference words: Domestic, immigrants, small, boat, people </p>
-                      </pre>
-                      If the target category is another person in the conversation thread but there is no reference word related to that category, you should check "The target category exists but there is no reference word."
-                      <pre><p>another person in the conversation thread: Shut the fuck up!</p>
-                      <p>reference words: The target category exists but there is no reference word.</p>
-                      </pre>
-                      <p>Please note that a comment can include more than one target category, and, in that case, you should identify all words that make reference to all identified target catgories.</p>
+                      <h2>Step 1: Preliminary Assessment of Targeting</h2>
+<p>You will review comments posted on Reddit to identify if they contain inappropriate language targeting a person or group of people. Follow these steps for each comment:</p>
+<ol>
+    <li>Read the comment and assess whether it targets anyone.</li>
+    <li>If the comment targets someone, mark the comment as targeting and proceed to <a href="#step2">Step 2</a>. If not, mark the comment as "Not Targeting."</li>
+</ol>
+
+<h2 id="step2">Step 2: Determine the Targets</h2>
+<p>In this step, you will decide whether the comment is targeting another person addressed in the conversation thread, the speaker themselves, or any other person/group.</p>
+<h3>Examples:</h3>
+<pre><p>another person addressed in the conversation thread: Sit the fuck down, you colossal piece of shit.</p>
+<p>speaker: Stupid me did not press the record button.</p>
+<p>other target: They should all be ashamed of themselves.</p>
+</pre>
+
+
+<h2>Steps 3-4: Identify Target Categories and Their Reference Words</h2>
+<p>Now, based on the characteristics known as target categories, determine the target categories based on which the comment targets a person or group of people. Mark all the words in the comment that refer to the identified target categories.</p>
+<h3>Examples:</h3>
+<ol>
+    <li>
+      <pre><p>sexual orientation: Gay men refuse to fuck like any other person.</p>
+      <p>reference words: Gay</p>
+      <p>gender: This person is a cisgender man pretending to be a woman to sell his shitty blog.</p>
+      <p>reference words: cisgender, man</p>
+      <p>disability: Why are you just sitting there like a mentally paralyzed person?</p>
+      <p>reference words: mentally, paralyzed</p>
+      <p>age: He still acts like a child.</p>
+      <p>reference words: child</p>
+      <p>race, ethnicity, or nationality: I don’t give a fuck if you are Asian.</p>
+      <p>reference words: Asian</p>
+      <p>religion: I literally hate Christians so much.</p>
+      <p>reference words: Christians</p>
+      <p>famous individual: How embarrassing Serena Williams was at the US open when she lost to Osaka.</p>
+      <p>reference words: Serena, Williams </p></pre>
+    </li>
+</ol>
+<p>Note: If a comment targets multiple categories, mark all relevant words for all categories.</p>
+<h3>Example:</h3>
+<ol>
+    <li>
+      <pre><p>sexual orientation, famous individual: Fuck Pitbull and Ne-Yo gay ass</p>
+      <p>reference words: Putbull, Ne-Yo, gay </p></pre>
+    </li>
+</ol>
+<p>In case a target category isn't listed, mark it as "other target category."</p>
                       <p>If you have any questions or feedback, please contact <b>Baran Barbarestani</b> via <b>b.barbarestani@vu.nl</b>. </p>
                     </div>
                   </div>
@@ -88,47 +104,14 @@
             <span style="display: block; margin-bottom: 10px; margin-top: 15px; margin-left: 20px;"><strong>User ID: </strong>{{question.user_id}}</span>
 <span style="display: block; margin-bottom: 10px; margin-top: 15px; margin-left: 20px;"><strong>Comment </strong><strong>{{question.comment_number}}</strong><strong>: </strong>{{question.comment}}</span>
 
-<div class="panel-heading" style="font-weight: bolder;">religion</div>
-<checkbox-answer style="display: block; margin-bottom: 10px; font-weight: bolder; margin-top: 15px;" options="question.comment_religion" answer="question.answer"></checkbox-answer>
-
-<checkbox-answer style="display: block; margin-bottom: 10px; font-weight: bolder; margin-top: 15px;" options="['_no reference word related to religion']" answer="question.answer"></checkbox-answer>
-<div class="panel-heading" style="font-weight: bolder;">gender</div>
-<checkbox-answer style="display: block; margin-bottom: 10px; font-weight: bolder; margin-top: 15px;" options="question.comment_gender" answer="question.answer"></checkbox-answer>
-
-<checkbox-answer style="display: block; margin-bottom: 10px; font-weight: bolder; margin-top: 15px;" options="['_no reference word related to gender']" answer="question.answer"></checkbox-answer>
-<div class="panel-heading" style="font-weight: bolder;">sexual orientaion</div>
+<div class="panel-heading" style="font-weight: bolder;">Step 1: Targeting or Not?</div>
+<checkbox-answer style="display: block; margin-bottom: 10px; font-weight: bolder; margin-top: 15px;" options="['_targeting', '_not targeting']" answer="question.answer"></checkbox-answer>
+<div class="panel-heading" style="font-weight: bolder;">Step 2: Target?</div>
+<checkbox-answer style="display: block; margin-bottom: 10px; font-weight: bolder; margin-top: 15px;" options="['_another person addressed in the conversation thread', '_speaker', '_other target']" answer="question.answer"></checkbox-answer>
+<div class="panel-heading" style="font-weight: bolder;">Step 3: Target Categories?</div>
+<checkbox-answer style="display: block; margin-bottom: 10px; font-weight: bolder; margin-top: 15px;" options="['_sexual orientation', '_gender', '_disability', '_age', '_race', '_religion', '_famous individual', '_other target category']" answer="question.answer"></checkbox-answer>
+<div class="panel-heading" style="font-weight: bolder;">Step 4: Words That Refer to Target Categories?</div>
 <checkbox-answer style="display: block; margin-bottom: 10px; font-weight: bolder; margin-top: 15px;" options="question.comment_sexual_orientation" answer="question.answer"></checkbox-answer>
-
-<checkbox-answer style="display: block; margin-bottom: 10px; font-weight: bolder; margin-top: 15px;" options="['_no reference word related to sexual orientation']" answer="question.answer"></checkbox-answer>
-<div class="panel-heading" style="font-weight: bolder;">age</div>
-<checkbox-answer style="display: block; margin-bottom: 10px; font-weight: bolder; margin-top: 15px;" options="question.comment_age" answer="question.answer"></checkbox-answer>
-
-<checkbox-answer style="display: block; margin-bottom: 10px; font-weight: bolder; margin-top: 15px;" options="['_no reference word related to age']" answer="question.answer"></checkbox-answer>
-<div class="panel-heading" style="font-weight: bolder;">disability</div>
-<checkbox-answer style="display: block; margin-bottom: 10px; font-weight: bolder; margin-top: 15px;" options="question.comment_disability" answer="question.answer"></checkbox-answer>
-<checkbox-answer style="display: block; margin-bottom: 10px; font-weight: bolder; margin-top: 15px;" options="['_no reference word related to disability']" answer="question.answer"></checkbox-answer>
-<div class="panel-heading" style="font-weight: bolder;">race, ethnicity, or nationality</div>
-<checkbox-answer style="display: block; margin-bottom: 10px; font-weight: bolder; margin-top: 15px;" options="question.comment_race_ethnicity_nationality" answer="question.answer"></checkbox-answer>
-<checkbox-answer style="display: block; margin-bottom: 10px; font-weight: bolder; margin-top: 15px;" options="['_no reference word related to race, ethnicity, or nationality']" answer="question.answer"></checkbox-answer>
-
-<div class="panel-heading" style="font-weight: bolder;">famous individual</div>
-<checkbox-answer style="display: block; margin-bottom: 10px; font-weight: bolder; margin-top: 15px;" options="question.comment_individual" answer="question.answer"></checkbox-answer>
-
-<checkbox-answer style="display: block; margin-bottom: 10px; font-weight: bolder; margin-top: 15px;" options="['_no reference word related to a famous individual']" answer="question.answer"></checkbox-answer>
-<div class="panel-heading" style="font-weight: bolder;">another person in the conversation thread</div>
-<checkbox-answer style="display: block; margin-bottom: 10px; font-weight: bolder; margin-top: 15px;" options="question.comment_another" answer="question.answer"></checkbox-answer>
-
-<checkbox-answer style="display: block; margin-bottom: 10px; font-weight: bolder; margin-top: 15px;" options="['_no reference word related to another person in the conversation thread']" answer="question.answer"></checkbox-answer>
-<div class="panel-heading" style="font-weight: bolder;">speaker</div>
-<checkbox-answer style="display: block; margin-bottom: 10px; font-weight: bolder; margin-top: 15px;" options="question.comment_speaker" answer="question.answer"></checkbox-answer>
-
-<checkbox-answer style="display: block; margin-bottom: 10px; font-weight: bolder; margin-top: 15px;" options="['_no reference word related to the speaker']" answer="question.answer"></checkbox-answer>
-<checkbox-answer style="display: block; margin-bottom: 10px; font-weight: bolder; margin-top: 15px;" options="['_The target category exists but there is no reference word.']" answer="question.answer"></checkbox-answer>
-<div class="panel-heading" style="font-weight: bolder;">other</div>
-<checkbox-answer style="display: block; margin-bottom: 10px; font-weight: bolder; margin-top: 15px;" options="question.comment_other" answer="question.answer"></checkbox-answer>
-
-<checkbox-answer style="display: block; margin-bottom: 10px; font-weight: bolder; margin-top: 15px;" options="['_No reference word related to other categories']" answer="question.answer"></checkbox-answer>
-
 <!-- End of question -->
 <div class="container-fluid">
   <div class="row">
