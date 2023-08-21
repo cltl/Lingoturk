@@ -47,7 +47,7 @@
 <p>You will review comments/titles posted on Reddit that may contain inappropriate language. Your task is to identify if they target a specific person or group of people. You should first read the post text if there is any and follow these steps for each comment/title:
 <ol>
     <li>Read the comment/title and assess whether it targets anyone.</li>
-    <li>If the comment/title targets someone, mark the comment/title as targeting and proceed to <a href="#step2">Step 2</a>. If not, mark the comment/title as "not targeting."</li>
+    <li>If the comment/title does not target someone, mark the comment/title as "not targeting". If the comment/title targets someone, proceed to <a href="#step2">Step 2</a>.</li>
 </ol>
 
 <h2 id="step2">Step 2: Determine the Targets</h2>
@@ -60,7 +60,7 @@
 
 
 <h2>Steps 3-4: Identify Target Categories and Their Reference Words</h2>
-<p>Now, based on the characteristics known as target categories, determine the target categories based on which the comment/title targets a person or group of people. Mark all the words in the comment/title that refer to the identified target categories.</p>
+<p>Now determine if a person or group is targeted based on certain charactersitics known as target categories by identifying them. Mark all the words in the comment/title that refer to the identified target categories.</p>
 <h3>Examples:</h3>
 <ol>
     <li>
@@ -107,7 +107,7 @@
 <span style="display: block; margin-bottom: 10px; margin-top: 15px; margin-left: 20px;"><strong>Comment </strong><strong>{{question.comment_number}}</strong><strong>: </strong>{{question.comment}}</span>
 
 <div class="panel-heading" style="font-weight: bolder;">Step 1: Preliminary Assessment of Targeting</div>
-<checkbox-answer style="display: block; margin-bottom: 10px; font-weight: bolder; margin-top: 15px;" options="['_targeting', '_not targeting']" answer="question.answer"></checkbox-answer>
+<checkbox-answer style="display: block; margin-bottom: 10px; font-weight: bolder; margin-top: 15px;" options="['_not targeting']" answer="question.answer"></checkbox-answer>
 <div class="panel-heading" style="font-weight: bolder;">Step 2: Determine the Targets</div>
 <checkbox-answer style="display: block; margin-bottom: 10px; font-weight: bolder; margin-top: 15px;" options="['_another person addressed in the conversation thread', '_speaker', '_other target']" answer="question.answer"></checkbox-answer>
 <div class="panel-heading" style="font-weight: bolder;">Step 3: Identify Target Categories</div>
